@@ -9,6 +9,18 @@ $(document).ready(function() {
         }
       });
 
+
+// Modal  -------------------------------------------------------------
+    $(document).on("click", "#modalInsert", function() {
+        $("#name").val("");
+        $("#last_name").val("");
+        $("#email").val("");
+        $("#phone").val("");
+
+        $("#save").removeClass("insert").removeClass("update");
+        $("#save").addClass("insert");
+    });
+
     $(document).on("click", ".editar", function() {
         array = [] 
         $('.'+this.id).each(function() {
@@ -21,34 +33,12 @@ $(document).ready(function() {
         $("#phone").val(array[3]);
     });
 
-    
-    $(document).on("click", ".eliminar", function() {
-        $.ajax({
-            type: "POST",
-            async: true,
-            url: "php/delete.php",
-            data: {id:this.id},
-            dataType: "json",
-            success: function(response){
-                loadTable();
-            }
-        });
-    });
-    $(document).on("click", "#modalInsert", function() {
-        $("#name").val("");
-        $("#last_name").val("");
-        $("#email").val("");
-        $("#phone").val("");
-
-        $("#save").removeClass("insert").removeClass("update");
-        $("#save").addClass("insert");
-    });
-   
     $(document).on("click", ".modalUpdate", function() {
         $("#save").removeClass("insert").removeClass("update");
         $("#save").addClass("update");
     });
 
+// Agregar registro  ------------------------------------------------------------------
     $(document).on("click", ".insert", function() {
         if(validateEmpty())
             alert("Favor de llenar todos los campos");
@@ -67,7 +57,7 @@ $(document).ready(function() {
                 }
             });
     });
-    
+// Actualizar registro -------------------------------------------------------------
     $(document).on("click", ".update", function() {
         $.ajax({
 			type: "POST",
@@ -84,6 +74,23 @@ $(document).ready(function() {
 		});
     });
 
+
+
+// Eliminar registro  ------------------------------------------------------------------
+$(document).on("click", ".eliminar", function() {
+    $.ajax({
+        type: "POST",
+        async: true,
+        url: "php/delete.php",
+        data: {id:this.id},
+        dataType: "json",
+        success: function(response){
+            loadTable();
+        }
+    });
+});
+
+// Buscar por campo -------------------------------------------------------------
     $(document).on("click", "#search", function() {
         $.ajax({
 			type: "POST",
@@ -105,7 +112,7 @@ $(document).ready(function() {
 		});
     });
    
-
+// Cargar tabla -------------------------------------------------------------
     function loadTable(){
         $.ajax({
             type: "POST",
@@ -121,7 +128,7 @@ $(document).ready(function() {
             }
         });
     }
-
+// Validacion de formulario vacio -------------------------------------------------------------
     function validateEmpty(){
        if(validateName() || validateLastName() || validateEmail() || validatePhone())
             return true;

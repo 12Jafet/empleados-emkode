@@ -42,26 +42,28 @@
 			<h1 style="color: #888;">Empleados</h1>
 		</div>
 		<br>
+		<!-- Buscar por campo -->
 		<form method="" name="formSearch" id="formSearch">
 			<div class="row" style="padding-left:20px;padding-right:20px">
 				<input class="col-3 form-control" type="text" id="keyWord" name="keyWord">
 				<input class="col btn btn-dark" type="button" name="filter" id="search" value="Buscar">
 				
-				<label class="col offset-1" for="idFilter">ID</label>
-				<input class="col form-control" type="radio" value="id" name="filter" id="idFilter" checked>
-				<label class="col" for="nameFilter">Nombre</label>
-				<input class="col form-control" type="radio" value="name" name="filter" id="nameFilter" checked>
-				<label class="col" for="last_nameFilter">Apellido</label>
-				<input class="col form-control" type="radio" value="last_name" name="filter" id="last_nameFilter">
-				<label class="col" for="emailFilter">Correo</label>
-				<input class="col form-control" type="radio" value="email" name="filter" id="emailFilter">
-				<label class="col" for="phoneFilter">Teléfono</label>
-				<input class="col form-control" type="radio" value="phone" name="filter" id="phoneFilter">
+				<label class=" offset-1" for="idFilter">ID</label>
+				<input class="col" type="radio" style="margin-top:5px;margin-left:5px" value="id" name="filter" id="idFilter" checked>
+				<label class="" for="nameFilter">Nombre</label>
+				<input class="col" type="radio" style="margin-top:5px;margin-left:5px" value="name" name="filter" id="nameFilter" checked>
+				<label class="" for="last_nameFilter">Apellido</label>
+				<input class="col" type="radio" style="margin-top:5px;margin-left:5px" value="last_name" name="filter" id="last_nameFilter">
+				<label class="" for="emailFilter">Correo</label>
+				<input class="col" type="radio" style="margin-top:5px;margin-left:5px" value="email" name="filter" id="emailFilter">
+				<label class="" for="phoneFilter">Teléfono</label>
+				<input class="col" type="radio" style="margin-top:5px;margin-left:5px" value="phone" name="filter" id="phoneFilter">
 				
 
 			</div>
 		</form>
 		<br>
+		<!-- Tabla -->
 		<form method="" name="" id="">
 			<table class="table table-striped table-dark" id="tabla" >
 
@@ -106,8 +108,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-dark" id="save">Guardar</button>
                     </div>
                     </div>
                 </div>
