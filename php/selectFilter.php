@@ -31,7 +31,6 @@ switch ($filter) {
         result($res);
         break;
 }
-// echo $filter;
 
 function result ($res){
     $i=0;

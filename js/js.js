@@ -50,19 +50,22 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".insert", function() {
-        $.ajax({
-			type: "POST",
-			async: true,
-			url: "php/insert.php",
-			data: $("#formEmpleados").serialize(),
-			dataType: "json",
-			success: function(response){
-                loadTable();
-			},
-			error: function(error){
-				alert(error);
-			}
-		});
+        if(validateEmpty())
+            alert("Favor de llenar todos los campos");
+        else
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "php/insert.php",
+                data: $("#formEmpleados").serialize(),
+                dataType: "json",
+                success: function(response){
+                    loadTable();
+                },
+                error: function(error){
+
+                }
+            });
     });
     
     $(document).on("click", ".update", function() {
@@ -76,8 +79,8 @@ $(document).ready(function() {
                 loadTable();
 			},
 			error: function(error){
-				alert(error);
-			}
+
+            }
 		});
     });
 
@@ -119,5 +122,36 @@ $(document).ready(function() {
         });
     }
 
+    function validateEmpty(){
+       if(validateName() || validateLastName() || validateEmail() || validatePhone())
+            return true;
+        else
+            return false;
+    }
+
+    function validateName(){
+        if($("#name").val()=="")
+            return true;
+        else
+            return false;
+    }
+    function validateLastName(){
+        if($("#last_name").val()=="")
+            return true;
+        else
+            return false;
+    }
+    function validateEmail(){
+        if($("#email").val()=="")
+            return true;
+        else
+            return false;
+    }
+    function validatePhone(){
+        if($("#phone").val()=="")
+            return true;
+        else
+            return false;
+    }
 
 });
